@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if(Context.Session.GetString("Rol") != null)
+    {
+        <h1 class="display-4">PROGRAMACIÓN 3</h1>
+        <h2 class="display-4">@($"Bienvenid@ {Context.Session.GetString("Mail")}")</h2>
+        <h2 class="display-4">Rol: @Context.Session.GetString("Rol")</h2>
+        <p>Seleccione la acción que desea realizar desde la barra superior</p>
+    }
+    else
+    {
+        <h1 class="display-4">@($"Bienvenid@")</h1>
+        <p>Inicie sesión para realizar otras gestiones</p>
+    }
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>

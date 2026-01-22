@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Web.Models.DTOs.PagoDTO.ListaPagoUnicoMayorADTO>
+
+@{
+    ViewData["Title"] = "PagoUnicoPorMontoMayorA";
+}
+
+<h1>Resultado de pagos mayores al monto: </h1>
+
+<!-- Filtro por monto mínimo (GET) -->
+<form asp-action="PagoUnicoPorMontoMayorA" method="get" class="row g-2 mt-2">
+    <div class="col-auto">
+        <label for="valor" class="col-form-label">Ingrese un monto</label>
+    </div>
+    <div class="col-auto">
+        <input type="number"
+               id="valor"
+               name="valor"
+               step="0.01"
+               class="form-control"
+               placeholder="Ej: 1000,00"
+               required />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-success">Buscar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPgo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCompra)
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+        <div>
+            <span class="alert-danger">@ViewBag.Mensaje</span>
+        </div>
+    </tbody>
+</table>

@@ -1,0 +1,172 @@
+﻿@using Web.Models.DTOs.TipoGastoDTOs
+@model Web.Models.DTOs.PagoRecurrenteDTO.PagoRecurrenteDTO
+
+@{
+    ViewData["Title"] = "PagoRecurrente";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #e5e7eb;
+    }
+
+    .recurrente-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+
+    .recurrente-card {
+        width: 100%;
+        max-width: 480px;
+        background: #0b1120;
+        padding: 35px 28px;
+        border-radius: 18px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        color: #e5e7eb;
+    }
+
+        .recurrente-card h1 {
+            text-align: center;
+            font-size: 1.55rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f9fafb;
+        }
+
+    .recurrente-subtitle {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-bottom: 16px;
+    }
+
+    hr {
+        border-color: rgba(148, 163, 184, 0.25);
+        margin-bottom: 22px;
+    }
+
+    label {
+        color: #d1d5db !important;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+
+    .form-control,
+    select {
+        background: #1e293b;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        color: #f1f5f9;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+        width: 100%;
+    }
+
+        .form-control:focus,
+        select:focus {
+            background: #1e293b;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 2px rgba(96,165,250,.35);
+            color: #fff;
+        }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        border: none;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+
+    .text-danger {
+        font-size: 0.82rem;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        color: #93c5fd;
+        text-decoration: none;
+    }
+
+        .back-link:hover {
+            color: #bfdbfe;
+            text-decoration: underline;
+        }
+</style>
+
+<div class="recurrente-container">
+    <div class="recurrente-card">
+
+        <h1>Pago Recurrente</h1>
+        <p class="recurrente-subtitle">Registrar un pago recurrente al sistema</p>
+        <hr />
+
+        <form asp-action="PagoRecurrente">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FechaDesde" class="control-label"></label>
+                <input asp-for="FechaDesde" class="form-control" />
+                <span asp-validation-for="FechaDesde" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FechaHasta" class="control-label"></label>
+                <input asp-for="FechaHasta" class="form-control" />
+                <span asp-validation-for="FechaHasta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ValorCompra" class="control-label"></label>
+                <input asp-for="ValorCompra" class="form-control" />
+                <span asp-validation-for="ValorCompra" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TipoGastoId" class="control-label"></label>
+                <select name="TipoGastoId">
+                    @foreach (ListadoTipoGastoDTO listadoTipoGasto in Model.TipoGastos)
+                    {
+                        <option value="@listadoTipoGasto.Id">@listadoTipoGasto.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="TipoGastoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <a asp-action="Index" class="back-link">Volver al listado</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

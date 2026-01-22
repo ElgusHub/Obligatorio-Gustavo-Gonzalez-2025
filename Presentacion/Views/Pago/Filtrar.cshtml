@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Web.Models.DTOs.PagoDTO.ListaFiltroPagoXFecha>
+
+@{
+    ViewData["Title"] = "Filtrar";
+    var fechaDisplay = (ViewBag.FechaSeleccionadaDisplay as string)
+                      ?? DateTime.Today.ToString("dd/MM/yyyy");
+}
+
+<h1>Pagos filtrados por fecha seleccionada: @fechaDisplay</h1>
+
+<p>
+    
+    <form asp-action="Filtrar" method="post" class="row g-2 mt-2">
+        @Html.AntiForgeryToken()
+        <div class="col-auto">
+            <label for="fecha" class="col-form-label">Filtrar por fecha:</label>
+        </div>
+        <div class="col-auto">
+            <input type="date"
+                   id="fecha"
+                   name="fecha"
+                   class="form-control"
+                   value="@( (ViewBag.FechaSeleccionada as string) ?? DateTime.Today.ToString("yyyy-MM-dd") )" />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+        </div>
+    </form>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreMetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTipoGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaldoPendiente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTipoGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaldoPendiente)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

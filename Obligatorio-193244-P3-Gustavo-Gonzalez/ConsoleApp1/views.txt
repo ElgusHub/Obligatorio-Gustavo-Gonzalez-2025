@@ -1,0 +1,1395 @@
+﻿***********************************
+Archivo: _ViewImports.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\_ViewImports.cshtml
+***********************************
+@using Presentacion
+@using Presentacion.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+***********************************
+Archivo: _ViewStart.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\_ViewStart.cshtml
+***********************************
+@{
+    Layout = "_Layout";
+}
+
+***********************************
+Archivo: Create.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Equipo\Create.cshtml
+***********************************
+@model CasosDeUso.DTOs.EquipoDTO.EquipoDTOs
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Alta de Equipo</h1>
+
+<h4>Equipo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@* <span class="alert-danger">@ViewBag.Mensaje</span> *@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Equipo\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.EquipoDTO.EquipoDTOs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Alta de equipo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<span class="alert-danger">@ViewBag.Mensaje</span>
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Home\Index.cshtml
+***********************************
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if(Context.Session.GetString("Rol") != null)
+    {
+        <h1 class="display-4">Bienvenido @Context.Session.GetString("NombreUsuario")</h1>
+        <h1 class="display-4">Rol: @Context.Session.GetString("Rol")</h1>
+        <p>Seleccione la acción que desea realizar desde la barra superior</p>
+    }
+    else
+    {
+        <h1 class="display-4">Bienvenido</h1>
+        <p>Inicie sesión para realizar otras gestiones</p>
+    }
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+
+***********************************
+Archivo: Privacy.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Home\Privacy.cshtml
+***********************************
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+***********************************
+Archivo: Create.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\MetodoPago\Create.cshtml
+***********************************
+@model CasosDeUso.DTOs.MetodoPagoDTO.MetodoPagoDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MetodoPagoDTO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@ViewBag.Mensaje
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: Details.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\MetodoPago\Details.cshtml
+***********************************
+@model CasosDeUso.DTOs.MetodoPagoDTO.DetalleMetodoPagoDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@if (Model.Id > 0)
+{
+
+
+    <div>
+        <h4>DetalleMetodoPagoDTO</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+else
+{
+
+    <span class="alert-danger">@ViewBag.Mensaje</span>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+}
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\MetodoPago\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.MetodoPagoDTO.ListadoMetodoPagoDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Metodo de pago</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new {id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new {id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+***********************************
+Archivo: Details.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\Details.cshtml
+***********************************
+@model CasosDeUso.DTOs.PagoDTO.BuscarPagoPorIdDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle de pago</h1>
+
+<div>
+    <h4>Detalle</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPago)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdPago)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetodoPago)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetodoPago)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoPago)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoPago)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UsuarioId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UsuarioId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreUsuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreUsuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DescripcionPago)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DescripcionPago)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MontoPago)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MontoPago)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) | *@
+    <a asp-action="Index">Volver</a>
+</div>
+
+***********************************
+Archivo: Filtrar.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\Filtrar.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.PagoDTO.ListaFiltroPagoXFecha>
+
+@{
+    ViewData["Title"] = "Filtrar";
+    var fechaDisplay = (ViewBag.FechaSeleccionadaDisplay as string)
+                      ?? DateTime.Today.ToString("dd/MM/yyyy");
+}
+
+<h1>Pagos filtrados por fecha seleccionada: @fechaDisplay</h1>
+
+<p>
+    
+    <form asp-action="Filtrar" method="post" class="row g-2 mt-2">
+        @Html.AntiForgeryToken()
+        <div class="col-auto">
+            <label for="fecha" class="col-form-label">Filtrar por fecha:</label>
+        </div>
+        <div class="col-auto">
+            <input type="date"
+                   id="fecha"
+                   name="fecha"
+                   class="form-control"
+                   value="@( (ViewBag.FechaSeleccionada as string) ?? DateTime.Today.ToString("yyyy-MM-dd") )" />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+        </div>
+    </form>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreMetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTipoGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaldoPendiente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTipoGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaldoPendiente)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.PagoDTO.ListadoPagoDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Pagos</h1>
+
+<!-- Calendario / Filtro por fecha (POST clásico) -->
+<form asp-action="Filtrar" method="post" class="row g-2 mt-2">
+    @Html.AntiForgeryToken()
+    <div class="col-auto">
+        <label for="fecha" class="col-form-label">Filtrar pago por fecha:</label>
+    </div>
+    <div class="col-auto">
+        <input type="date"
+               id="fecha"
+               name="fecha"
+               class="form-control"
+               value="@( (ViewBag.FechaSeleccionada as string) ?? DateTime.Today.ToString("yyyy-MM-dd") )" />
+        @* value="@(ViewBag.FechaSeleccionada ?? "")" /> *@
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+    </div>
+</form>
+
+
+<!-- Filtro por monto mínimo (GET) -->
+<form asp-action="PagoUnicoPorMontoMayorA" method="get" class="row g-2 mt-2">
+    <div class="col-auto">
+        <label for="valor" class="col-form-label">Pago único mayor a:</label>
+    </div>
+    <div class="col-auto">
+        <input type="number"
+               id="valor"
+               name="valor"
+               step="0.01"
+               class="form-control"
+               placeholder="Ej: 1000,00"
+               required />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-success">Buscar</button>
+    </div>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RolUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescTipoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Montopago)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RolUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescTipoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Montopago)
+            </td>
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new {id=item.IdPago}) | *@
+                    @Html.ActionLink("Details", "Details", new { id = item.IdPago }) |
+                @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+            </td>
+        </tr>
+}
+        <span class="alert-danger">@ViewBag.Mensaje</span>
+    </tbody>
+</table>
+
+***********************************
+Archivo: PagoRecurrente.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\PagoRecurrente.cshtml
+***********************************
+@using CasosDeUso.DTOs.TipoGastoDTOs
+@using CasosDeUso.DTOs.UsuarioDTOs
+@model CasosDeUso.DTOs.PagoRecurrenteDTO.PagoRecurrenteDTO
+
+@{
+    ViewData["Title"] = "PagoRecurrente";
+}
+
+<h1>Bienvenido a Pago recurrente</h1>
+
+<h4>Alta de Pago Recurrente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PagoRecurrente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="UsuarioId" class="control-label"></label>
+                <select name="UsuarioId">
+                    @foreach (ListadoUsuarioDTO listadoUsuario in Model.Usuarios)
+                    {
+                        <option value="@listadoUsuario.Id">@listadoUsuario.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TipoGastoId" class="control-label"></label>
+                <select name="TipoGastoId">
+                    @foreach (ListadoTipoGastoDTO listadoTipoGasto in Model.TipoGastos)
+                    {
+                        <option value="@listadoTipoGasto.Id">@listadoTipoGasto.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="TipoGastoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaDesde" class="control-label"></label>
+                <input asp-for="FechaDesde" type="date" class="form-control" />
+                <span asp-validation-for="FechaDesde" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaHasta" class="control-label"></label>
+                <input asp-for="FechaHasta" type="date" class="form-control" />
+                <span asp-validation-for="FechaHasta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ValorCompra" class="control-label"></label>
+                <input asp-for="ValorCompra" type="number" class="form-control" />
+                <span asp-validation-for="ValorCompra" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <div>
+    <a asp-action="Index">Volver a la lista</a>
+</div> *@
+<span class="alert-danger">@ViewBag.Mensaje</span>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: PagoUnico.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\PagoUnico.cshtml
+***********************************
+@using CasosDeUso.DTOs.TipoGastoDTOs
+@using CasosDeUso.DTOs.UsuarioDTOs
+@model CasosDeUso.DTOs.PagoUnicoDTO.PagoUnicoDTO
+
+@{
+    ViewData["Title"] = "PagoUnico";
+}
+
+<h1>Bienvenido a Pago único</h1>
+
+<h4>Alta de Pago único</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PagoUnico">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label"></label>
+                <select name="UsuarioId">
+                    @foreach (ListadoUsuarioDTO listadoUsuario in Model.Usuarios)
+                    {
+                        <option value="@listadoUsuario.Id">@listadoUsuario.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoGastoId" class="control-label"></label>
+                <select name="TipoGastoId">
+                    @foreach (ListadoTipoGastoDTO listadoTipoGasto in Model.TipoGastos)
+                    {
+                        <option value="@listadoTipoGasto.Id">@listadoTipoGasto.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="TipoGastoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroRecibo" class="control-label"></label>
+                <input asp-for="NumeroRecibo" class="form-control" />
+                <span asp-validation-for="NumeroRecibo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPago" class="control-label"></label>
+                <input asp-for="FechaPago" type="date" min="2023-01-02" class="form-control" />
+                <span asp-validation-for="FechaPago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MontoPago" class="control-label"></label>
+                <input asp-for="MontoPago" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="MontoPago" class="text-danger"></span>
+            </div>
+           
+           @*  <div class="form-group">
+                <label asp-for="MetodoPagoId" class="control-label"></label>
+                <input asp-for="MetodoPagoId" class="form-control" />
+                <span asp-validation-for="MetodoPagoId" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <span class="alert-danger">@ViewBag.Mensaje</span>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: PagoUnicoPorMontoMayorA.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Pago\PagoUnicoPorMontoMayorA.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.PagoDTO.ListaPagoUnicoMayorADTO>
+
+@{
+    ViewData["Title"] = "PagoUnicoPorMontoMayorA";
+}
+
+<h1>Resultado de pagos mayores al monto: </h1>
+
+<!-- Filtro por monto mínimo (GET) -->
+<form asp-action="PagoUnicoPorMontoMayorA" method="get" class="row g-2 mt-2">
+    <div class="col-auto">
+        <label for="valor" class="col-form-label">Ingrese un monto</label>
+    </div>
+    <div class="col-auto">
+        <input type="number"
+               id="valor"
+               name="valor"
+               step="0.01"
+               class="form-control"
+               placeholder="Ej: 1000,00"
+               required />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-success">Buscar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPgo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCompra)
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+        <div>
+            <span class="alert-danger">@ViewBag.Mensaje</span>
+        </div>
+    </tbody>
+</table>
+
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Rol\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.RolDTO.ListarRolParaAltaUsuarioDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Roles</h1>
+
+@* <p>
+    <a asp-action="Create">Alta de rol</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+***********************************
+Archivo: Error.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Shared\Error.cshtml
+***********************************
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Development Mode</h3>
+<p>
+    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+</p>
+<p>
+    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
+    It can result in displaying sensitive information from exceptions to end users.
+    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
+    and restarting the app.
+</p>
+
+***********************************
+Archivo: _Layout.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Shared\_Layout.cshtml
+***********************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Presentacion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Presentacion.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Presentacion</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                       
+                        
+                        @if (Context.Session.GetString("Rol") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        @if (Context.Session.GetString("Rol") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        @if (Context.Session.GetString("Rol") != null && Context.Session.GetString("Rol") == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TipoGasto" asp-action="Index">Tipos de Gastos</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pago" asp-action="PagoUnico">Alta de Pago único</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pago" asp-action="PagoRecurrente">Alta de Pago recurrente</a>
+                        </li>
+                         @if (Context.Session.GetString("Rol") != null && Context.Session.GetString("Rol") == "Gerente")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Pago" asp-action="Index">Listado de Pagos</a>
+                            </li>
+                        }
+                         @if (Context.Session.GetString("Rol") != null && Context.Session.GetString("Rol") == "Gerente" || Context.Session.GetString("Rol") == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Create">Alta de Usuario</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <span class="alert-danger">@ViewBag.Mensaje</span>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Presentacion - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+***********************************
+Archivo: _ValidationScriptsPartial.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Shared\_ValidationScriptsPartial.cshtml
+***********************************
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+***********************************
+Archivo: Create.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\TipoGasto\Create.cshtml
+***********************************
+@model CasosDeUso.DTOs.TipoGastoDTOs.TipoGastoDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Alta de Tipo de gastos</h1>
+
+<h4>Alta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+@ViewBag.Mensaje
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: Delete.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\TipoGasto\Delete.cshtml
+***********************************
+@model CasosDeUso.DTOs.TipoGastoDTOs.DetalleTipoGastoDTO
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+    @if (Model.Id > 0)
+    {
+<div>
+    <h4>DetalleTipoGasto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+    </div>
+}
+else
+{
+    <span class="alert-danger">@ViewBag.Mensaje</span>
+    <p><a asp-action="Index">Back to List</a></p>
+}
+@ViewBag.Mensaje
+***********************************
+Archivo: Details.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\TipoGasto\Details.cshtml
+***********************************
+@model CasosDeUso.DTOs.TipoGastoDTOs.DetalleTipoGastoDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle</h1>
+@if(Model.Id >0){
+<div>
+    <h4>Detalle de Tipo de Gasto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+    </div>
+}
+else
+{
+    <span class="alert-danger">@ViewBag.Mensaje</span>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+***********************************
+Archivo: Edit.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\TipoGasto\Edit.cshtml
+***********************************
+@model CasosDeUso.DTOs.TipoGastoDTOs.DetalleTipoGastoDTO
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DetalleTipoGasto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\TipoGasto\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.TipoGastoDTOs.ListadoTipoGastoDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>LISTA DE TIPO DE GASTOS</h1>
+
+<p>
+    <a asp-action="Create">Nueva Alta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new {id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new {id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+***********************************
+Archivo: Create.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Usuario\Create.cshtml
+***********************************
+@using CasosDeUso.DTOs.EquipoDTO
+@using CasosDeUso.DTOs.RolDTO
+@model CasosDeUso.DTOs.UsuarioDTOs.AltaUsuarioDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Alta de nuevo ususario</h1>
+
+<h4>Ingrese los datos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pass" class="control-label"></label>
+                <input asp-for="Pass" class="form-control" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="EquipoId" class="control-label"></label>
+                <select name="EquipoId">
+                    @foreach (EquipoDTOs listadoEquipo in Model.Equipos)
+                    {
+                        <option value="@listadoEquipo.Id">@listadoEquipo.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="EquipoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RolId" class="control-label"></label>
+                <select name="RolId">
+                    @foreach (ListarRolParaAltaUsuarioDTO listadoRol in Model.RolesDisponibles)
+                    {
+                        <option value="@listadoRol.Id">@listadoRol.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="RolId" class="text-danger"></span>
+            </div>
+
+            @* <div class="form-group">
+                <label asp-for="RolId" class="control-label"></label>
+                <select asp-for="RolId"
+                        asp-items="@(new SelectList(Model.RolesDisponibles))"
+                        class="form-select">
+                    <option value="">-- Seleccione --</option>
+                </select>
+                <span asp-validation-for="RolNombre" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<span class="alert-danger">@ViewBag.Mensaje</span>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+***********************************
+Archivo: Index.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Usuario\Index.cshtml
+***********************************
+@model IEnumerable<CasosDeUso.DTOs.UsuarioDTOs.ListadoUsuarioDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Alta nuevo usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<span class="alert-danger">@ViewBag.Mensaje</span>
+***********************************
+Archivo: Login.cshtml
+Carpeta: C:\Users\gusta\Documents\ORT_2025\P3_Liliana_Pino_2025\Obligatorio\Obligatorio-193244-P3-Gustavo-Gonzalez\Presentacion\Views\Usuario\Login.cshtml
+***********************************
+@model CasosDeUso.DTOs.UsuarioDTOs.UsuarioLoginDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<h4>Inicie sesión</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a inicio</a>
+</div>
+<div>
+    <span class="alert-danger">@ViewBag.Mensaje</span>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

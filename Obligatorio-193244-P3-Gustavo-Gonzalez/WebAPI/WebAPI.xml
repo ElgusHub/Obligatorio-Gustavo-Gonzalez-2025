@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPI.Controllers.AuditoriaWebAPIController.AuditoriaPorTipoDePagoId(System.Int32)">
+            <summary>
+            Obtener Auditoria por Id de Tipo de Pago
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.MetodoPagoWebAPIController.ListaMetodoPago">
+            <summary>
+            Listado de Metodo de pago
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.Get">
+            <summary>
+            Permite obtener la lista de Pago
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.AltaPagoUnico(CasosDeUso.DTOs.PagoUnicoDTO.AltaPagoUnicoDTO)">
+            <summary>
+            Alta de Pago Unico
+            </summary>
+            <param name="altaPagoUnicoDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.AltaPagoRecurrente(CasosDeUso.DTOs.PagoRecurrenteDTO.AltaPagoRecurrenteDTO)">
+            <summary>
+            Alta de Pago Recurrente
+            </summary>
+            <param name="altaPagoRecurrenteDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.Get(System.Int32)">
+            <summary>
+            Permite obtener los datos de un Pago por Id del parámetro
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.ObtenerPagosPorUnUsuario">
+            <summary>
+            Obtener los pagos de usuario logueado
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.PagoWebAPIController.EquiposConPagosUnicosMayorA(System.Decimal)">
+            <summary>
+            Equipos con ususarios con pagos unicos mayor A:
+            </summary>
+            <param name="monto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoGastoWebAPIController.Get">
+            <summary>
+            Obtener lista de Tipo Gasto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.UsuarioWebAPIController.Post(CasosDeUso.DTOs.UsuarioDTOs.UsuarioLoginDTO)">
+            <summary>
+            Login Usuario
+            </summary>
+            <param name="usuarioLoginDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.UsuarioWebAPIController.Get">
+            <summary>
+            Permite obtener la lista de usuarios
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WebAPI.Controllers.UsuarioWebAPIController.UsuarioPorId(System.Int32)" -->
+        <member name="M:WebAPI.Controllers.UsuarioWebAPIController.Post(CasosDeUso.DTOs.UsuarioDTOs.AltaUsuarioDTO)">
+            <summary>
+            Permite dar el alta a un usuario
+            </summary>
+            <param name="usuarioDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.UsuarioWebAPIController.CambiarPass(CasosDeUso.DTOs.UsuarioDTOs.CambiarContrasenaDTO)">
+            <summary>
+            Cambiar Contraseña de un usuario
+            </summary>
+            <param name="cambiarContrasenaDTO"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

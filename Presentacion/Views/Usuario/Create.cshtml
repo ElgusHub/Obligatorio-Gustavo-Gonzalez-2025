@@ -1,0 +1,86 @@
+﻿@using Web
+@using Web.Models
+@using Web.Models.DTOs.EquipoDTO
+@using Web.Models.DTOs.RolDTO
+@model Web.Models.DTOs.UsuarioDTOs.AltaUsuarioDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Alta de nuevo ususario</h1>
+
+<h4>Ingrese los datos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pass" class="control-label"></label>
+                <input asp-for="Pass" class="form-control" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="EquipoId" class="control-label"></label>
+                <select name="EquipoId">
+                    @foreach (EquipoDTOs listadoEquipo in Model.Equipos)
+                    {
+                        <option value="@listadoEquipo.Id">@listadoEquipo.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="EquipoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RolId" class="control-label"></label>
+                <select name="RolId">
+                    @foreach (ListarRolParaAltaUsuarioDTO listadoRol in Model.RolesDisponibles)
+                    {
+                        <option value="@listadoRol.Id">@listadoRol.Nombre</option>
+
+                    }
+                </select>
+                <span asp-validation-for="RolId" class="text-danger"></span>
+            </div>
+
+            @* <div class="form-group">
+                <label asp-for="RolId" class="control-label"></label>
+                <select asp-for="RolId"
+                        asp-items="@(new SelectList(Model.RolesDisponibles))"
+                        class="form-select">
+                    <option value="">-- Seleccione --</option>
+                </select>
+                <span asp-validation-for="RolNombre" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<span class="alert-danger">@ViewBag.Mensaje</span>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

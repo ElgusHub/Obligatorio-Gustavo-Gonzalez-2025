@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ValueObjects\**" />
+    <EmbeddedResource Remove="ValueObjects\**" />
+    <None Remove="ValueObjects\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExcepcionesPropias\ExcepcionesPropias.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.19" />
+  </ItemGroup>
+
+</Project>
